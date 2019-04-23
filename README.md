@@ -13,3 +13,4 @@ Shipped Android Version | 7.1.1 (Nougat)
 Storage | 32GB or 64GB
 Battery | 3000 mAh
 
+Dear Indians, when you port or add packages to your Nokia devices, think twice cos they are useless as seen on nokia-dev repos )
