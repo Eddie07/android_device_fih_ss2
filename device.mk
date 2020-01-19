@@ -48,7 +48,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/audio/audio_platform_info_sd1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_sd1.xml \
+    $(LOCAL_PATH)/audio/audio_platform_info_sg1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_sg1.xml \
     $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_sd1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_sd1.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_sg1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_sg1.xml \
     $(LOCAL_PATH)/audio/audio_tuning_mixer_tasha.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer_tasha.txt \
     $(LOCAL_PATH)/audio/graphite_ipc_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/graphite_ipc_platform_info.xml \
     $(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9335.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_wcd9335.xml \
@@ -57,9 +61,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/drc_cfg_AZ.txt:$(TARGET_COPY_OUT_VENDOR)/etc/drc/drc_cfg_AZ.txt \
     $(LOCAL_PATH)/audio/listen_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/listen_platform_info.xml \
     $(LOCAL_PATH)/audio/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
-    $(LOCAL_PATH)/audio/surround_sound_rec_5.1.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/surround_sound_3mic/surround_sound_rec_5.1.cfg \
-    $(LOCAL_PATH)/audio/surround_sound_rec_AZ.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/surround_sound_3mic/surround_sound_rec_AZ.cfg \
     $(LOCAL_PATH)/audio/TFA9891.cnt:$(TARGET_COPY_OUT_VENDOR)/firmware/TFA9891.cnt \
+   $(LOCAL_PATH)/audio/TFA9891_sd1.cnt:$(TARGET_COPY_OUT_VENDOR)/firmware/TFA9891_sd1.cnt \
+  $(LOCAL_PATH)/audio/TFA9891_sd1.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/TFA9891_sd1.ini \
+   $(LOCAL_PATH)/audio/TFA9891_sd1_dvt.cnt:$(TARGET_COPY_OUT_VENDOR)/firmware/TFA9891_sd1_dvt.cnt \
+  $(LOCAL_PATH)/audio/TFA9891_sd1_dvt.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/TFA9891_sd1_dvt.ini \
    $(LOCAL_PATH)/audio/TFA9891_N1A_11_1_31_NL3_HQ.patch:$(TARGET_COPY_OUT_VENDOR)/firmware/TFA9891_N1A_11_1_31_NL3_HQ.patch \
   $(LOCAL_PATH)/audio/TFA9891N1A_Dec2015.config:$(TARGET_COPY_OUT_VENDOR)/firmware/TFA9891N1A_Dec2015.config \
   $(LOCAL_PATH)/audio/TFA9891.speaker:$(TARGET_COPY_OUT_VENDOR)/firmware/TFA9891.speaker \
@@ -76,18 +82,25 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/audio/T9891M04.drc:$(TARGET_COPY_OUT_VENDOR)/firmware/T9891M04.drc \
   $(LOCAL_PATH)/audio/T9891M04.vstep:$(TARGET_COPY_OUT_VENDOR)/firmware/T9891M04.vstep \
   $(LOCAL_PATH)/audio/TAS2557MSSMono.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/TAS2557MSSMono.bin \
-  $(LOCAL_PATH)/audio/CommonVendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/CommonVendor.xml
+  $(LOCAL_PATH)/audio/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
+  $(LOCAL_PATH)/audio/CommonVendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/CommonVendor.xml \
+  $(LOCAL_PATH)/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf
 
+#  $(LOCAL_PATH)/audio/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2040
 TARGET_SCREEN_WIDTH := 1080
 
+#Dalvik
+$(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
+
 # Fingerprint Gestures
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
-    $(LOCAL_PATH)/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc
-
+    $(LOCAL_PATH)/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc \
+    $(LOCAL_PATH)/keylayout/goodix_fp.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/goodix_fp.kl \
+    $(LOCAL_PATH)/idc/goodix_fp.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/goodix_fp.idc
 #HIDL
 PRODUCT_PACKAGES += \
   android.hidl.manager@1.0-java
@@ -97,6 +110,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.fingerprint.SAT.rc \
     init.fingerprint.SS2.rc \
+    init.fingerprint.HH6.rc \
     init.SATSS2.rc \
     init.nfc.nxp.rc
 
@@ -104,33 +118,37 @@ PRODUCT_PACKAGES += \
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.1-service \
-    vendor.nxp.hardware.nfc@1.1-service \
-    com.android.nfc_extras \
-    NfcNci \
+   vendor.nxp.hardware.nfc@1.2-service \
+   com.android.nfc_extras \
+   NfcNci \
     SecureElement \
      Tag \
-    nfcee_access.xml \
+     nfcee_access.xml \
+     nfcse_access.xml 
 
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libese-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libese-nxp.conf \
     $(LOCAL_PATH)/nfc/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/nfc/libnfc-nxp-hh6.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp-hh6.conf \
     $(LOCAL_PATH)/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_fih
 
-# Shims
-PRODUCT_PACKAGES += \
-    camera.sdm660.shim
+# Shims NO Need
+#PRODUCT_PACKAGES += \
+#    camera.sdm660.shim
 
 
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf \
-    $(LOCAL_PATH)/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev_s2.conf \
+    $(LOCAL_PATH)/sensors/sensor_def_qcomdev_s2.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev_s2.conf \
+    $(LOCAL_PATH)/sensors/sensor_def_qcomdev_hh1.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev_hh1.conf \
+    $(LOCAL_PATH)/sensors/sensor_def_qcomdev_hh6.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev_hh1.conf \
     $(LOCAL_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # Verity
@@ -144,6 +162,7 @@ $(call inherit-product, device/sharp/sdm660-common/common.mk)
 #wlan
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/wlan/bdwlan_SS2_cal.bin:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/bdf/bdwlan_SS2_cal.bin \
+     $(LOCAL_PATH)/wlan/bdwlan_SD1_cal.bin:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/bdf/bdwlan_SD1_cal.bin \
      $(LOCAL_PATH)/wlan/bdwlan_SAT_cal.bin:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/bdf/bdwlan_SAT_cal.bin
 
 

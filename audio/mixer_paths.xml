@@ -1052,6 +1052,9 @@
         <ctl name="SLIMBUS_5_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
+    <path name="compress-offload-playback2 headphones-dsd">
+    </path>
+
     <path name="compress-offload-playback2 speaker-and-headphones">
         <path name="compress-offload-playback2 headphones" />
         <path name="compress-offload-playback2 speaker" />
@@ -1624,8 +1627,7 @@
     </path>
 
     <path name="audio-record bt-sco-wb">
-        <ctl name="BT SampleRate RX" value="KHZ_16" />
-        <ctl name="BT SampleRate TX" value="KHZ_16" />
+        <ctl name="BT SampleRate" value="KHZ_16" />
         <path name="audio-record bt-sco" />
     </path>
 
@@ -1642,8 +1644,7 @@
     </path>
 
     <path name="audio-record-compress bt-sco-wb">
-        <ctl name="BT SampleRate RX" value="KHZ_16" />
-        <ctl name="BT SampleRate TX" value="KHZ_16" />
+        <ctl name="BT SampleRate" value="KHZ_16" />
         <path name="audio-record-compress bt-sco" />
     </path>
 
@@ -1660,8 +1661,7 @@
     </path>
 
     <path name="low-latency-record bt-sco-wb">
-        <ctl name="BT SampleRate RX" value="KHZ_16" />
-        <ctl name="BT SampleRate TX" value="KHZ_16" />
+        <ctl name="BT SampleRate" value="KHZ_16" />
         <path name="low-latency-record bt-sco" />
     </path>
 
@@ -1810,76 +1810,76 @@
     <path name="incall-rec-uplink-and-downlink-compress afe-proxy">
         <path name="incall-rec-uplink-and-downlink-compress" />
     </path>
-    <path name="incall_music_uplink">
+    <path name="incall-music-uplink">
         <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
     </path>
 
-    <path name="incall_music_uplink speaker">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink speaker">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink handset">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink handset">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink handset-hac">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink handset-hac">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink display-port">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink display-port">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink bt-sco">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink bt-sco">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink bt-sco-wb">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink bt-sco-wb">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink speaker-and-display-port">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink speaker-and-display-port">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink afe-proxy">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink afe-proxy">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink usb-headphones">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink usb-headphones">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink usb-headset">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink usb-headset">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink speaker-and-usb-headphones">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink speaker-and-usb-headphones">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink headphones">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink headphones">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink speaker-and-headphones">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink speaker-and-headphones">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink speaker-and-bt-sco">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink speaker-and-bt-sco">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink voice-tty-hco-handset">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink voice-tty-hco-handset">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink speaker-and-bt-a2dp">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink speaker-and-bt-a2dp">
+        <path name="incall-music-uplink" />
     </path>
 
-    <path name="incall_music_uplink bt-a2dp">
-        <path name="incall_music_uplink" />
+    <path name="incall-music-uplink bt-a2dp">
+        <path name="incall-music-uplink" />
     </path>
 
     <path name ="voice-music-tx">
@@ -1939,8 +1939,7 @@
     </path>
 
     <path name="compress-voip-call bt-sco-wb">
-        <ctl name="BT SampleRate RX" value="KHZ_16" />
-        <ctl name="BT SampleRate TX" value="KHZ_16" />
+        <ctl name="BT SampleRate" value="KHZ_16" />
         <path name="compress-voip-call bt-sco" />
     </path>
 
@@ -2052,8 +2051,7 @@
     </path>
 
     <path name="voicemmode1-call bt-sco-wb">
-        <ctl name="BT SampleRate RX" value="KHZ_16" />
-        <ctl name="BT SampleRate TX" value="KHZ_16" />
+        <ctl name="BT SampleRate" value="KHZ_16" />
         <path name="voicemmode1-call bt-sco" />
     </path>
 
@@ -2109,8 +2107,7 @@
     </path>
 
     <path name="voicemmode2-call bt-sco-wb">
-        <ctl name="BT SampleRate RX" value="KHZ_16" />
-        <ctl name="BT SampleRate TX" value="KHZ_16" />
+        <ctl name="BT SampleRate" value="KHZ_16" />
         <path name="voicemmode2-call bt-sco" />
     </path>
 
@@ -3155,8 +3152,7 @@
     </path>
 
     <path name="mmap-playback bt-sco-wb">
-        <ctl name="BT SampleRate RX" value="KHZ_16" />
-        <ctl name="BT SampleRate TX" value="KHZ_16" />
+        <ctl name="BT SampleRate" value="16000" />
         <path name="mmap-playback bt-sco" />
     </path>
 
@@ -3181,8 +3177,7 @@
     </path>
 
     <path name="mmap-record bt-sco-wb">
-        <ctl name="BT SampleRate RX" value="KHZ_16" />
-        <ctl name="BT SampleRate TX" value="KHZ_16" />
+  <ctl name="BT SampleRate" value="16000" />
         <path name="mmap-record bt-sco" />
     </path>
 

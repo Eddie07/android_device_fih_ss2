@@ -30,7 +30,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 # Kernel
 TARGET_KERNEL_CONFIG := SAT-perf_defconfig
 # TARGET_KERNEL_SOURCE := kernel/sharp/
-TARGET_KERNEL_SOURCE := kernel/msm-4.4/
+TARGET_KERNEL_SOURCE := kernel/msm-4.14/
 # TARGET_KERNEL_CLANG_COMPILE := true
 
 # Partitions
@@ -49,19 +49,9 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 BUILD_BROKEN_DUP_RULES := true
 
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /vendor/lib/hw/camera.sdm660.so|camera.sdm660.shim.so
-
-# Treble
-# PRODUCT_SHIPPING_API_LEVEL := 27
-
-# TARGET_PROVIDES_KEYMASTER := true
-
-# Legacy BLOB Support
-#TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
-#TARGET_LD_SHIM_LIBS += \
-#    /vendor/lib/hw/camera.sdm660.so|libshim_camera.so
+# Shims - NO NEED SINCE WE HAVE Q HAL FROM PL-
+#TARGET_LD_SHIM_LIBS := \
+#   /vendor/lib/hw/camera.sdm660.so|camera.sdm660.shim.so
 
 
 # Wifi
@@ -69,7 +59,7 @@ WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
 
 # NFC
 TARGET_USES_NQ_NFC := true
-BOARD_NFC_CHIPSET := pn548
+#BOARD_NFC_CHIPSET := pn548
 
 
 

@@ -1,3 +1,4 @@
+import /vendor/etc/init/hw/init.nfc.nxp.rc
 #remosaic Samsung 
 service remosaic_daemon /system/vendor/bin/remosaic_daemon
     class late_start

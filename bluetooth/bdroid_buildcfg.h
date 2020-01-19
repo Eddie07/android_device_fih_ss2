@@ -23,8 +23,31 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
+#include <stdint.h>
+#pragma push_macro("PROPERTY_VALUE_MAX")
 
-#define BTM_DEF_LOCAL_NAME "Sharp Aquos S2"
+#include <cutils/properties.h>
+#include <string.h>
+
+static inline const char* BtmGetDefaultName()
+{
+    char product_device[PROPERTY_VALUE_MAX];
+    property_get("ro.boot.device", product_device, "");
+
+    if (strstr(product_device, "SS2"))
+        return "Sharp Aquos S2";
+    if (strstr(product_device, "SAT"))
+        return "Sharp Aquos S2 Plus";
+    if (strstr(product_device, "HH1"))
+        return "Sharp Aquos S3";
+    if (strstr(product_device, "SG1"))
+        return "Sharp Aquos S3 mini";
+
+    return "FIH Phone";
+}
+#undef PROPERTY_VALUE_MAX
+
+#define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
 #define BLUETOOTH_QTI_SW TRUE
 #define MAX_ACL_CONNECTIONS   16
 #define MAX_L2CAP_CHANNELS    16
@@ -32,4 +55,5 @@
 // skips conn update at conn completion
 #define BT_CLEAN_TURN_ON_DISABLED 1
 #define AVDT_NUM_SEPS 12
+#pragma pop_macro("PROPERTY_VALUE_MAX")
 #endif

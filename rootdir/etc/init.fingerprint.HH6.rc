@@ -1,0 +1,13 @@
+on early-boot
+    # set property ro.hardware.fingerprint for vendor HAL library load
+    setprop ro.hardware.fingerprint gxfp5288_hh6
+
+on boot
+	setprop sys.fp.navigation.enable 1
+
+on fs
+    chown system system /dev/goodix_fp
+    chmod 666 /dev/goodix_fp
+
+on post-fs-data
+	mkdir /data/system/fingerprint 0770 system system
